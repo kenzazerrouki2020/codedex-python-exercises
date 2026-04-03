@@ -1,0 +1,14 @@
+data type
+
+# int
+age = 34
+print(age)
+#str
+name = "kenza"
+print(name)
+#float
+wig= 56.50
+print(wig)
+#bool
+is_girl=True 
+print(is_girl)
