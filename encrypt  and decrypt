@@ -1,0 +1,53 @@
+import string
+
+# Create a function that can encrypt or decrypt a message
+def cipher(message, shift, mode):
+
+    # Define the alphabet (lowercase letters)
+    alphabet = string.ascii_lowercase
+
+    # This variable will store the final result
+    result = ""
+
+    # Loop through each letter in the message
+    for letter in message:
+
+        # Check if the character is a letter (not space or symbol)
+        if letter.isalpha():
+
+            # Find the position of the letter in the alphabet
+            position = alphabet.index(letter.lower())
+
+            # If the mode is "encrypt", we move forward
+            if mode == "encrypt":
+                new_position = (position + shift) % 26
+
+            # If the mode is "decrypt", we move backward
+            elif mode == "decrypt":
+                new_position = (position - shift) % 26
+
+            # Get the new encrypted/decrypted letter
+            new_letter = alphabet[new_position]
+
+            # Keep the original case (uppercase or lowercase)
+            if letter.isupper():
+                new_letter = new_letter.upper()
+
+            # Add the new letter to the result
+            result += new_letter
+
+        else:
+            # If it's not a letter (space, number, symbol), keep it unchanged
+            result += letter
+
+    # Print the final result
+    print("Result:", result)
+
+
+# Ask the user for input
+user_message = input("Enter a message: ")
+user_shift = int(input("Enter shift number: "))
+user_mode = input("Type 'encrypt' or 'decrypt': ").lower()
+
+# Call the function
+cipher(user_message, user_shift, user_mode)
